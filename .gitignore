@@ -1,2 +1,3 @@
-a.out
-./objects/*.o
+/a.out
+/objects/*.o
+perfEG
