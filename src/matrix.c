@@ -129,32 +129,7 @@ void gaussEliminationWithPivoting(Matrix *m, Vector *c)
     for (size_t j = i + 1; j < m->size; j++)
     {
       double mult = m->data[j][i] / m->data[i][i];
-      m->data[j][i] = 0;
-      for (size_t k = i; k < m->size; k++)
-      {
-        m->data[j][k] -= mult * m->data[i][k];
-      }
 
-      c->data[j] -= mult * c->data[i];
-    }
-  }
-}
-
-void gaussEliminationWithPivotingWithoutMultipliers(Matrix *m, Vector *c)
-{
-  for (size_t i = 0; i < m->size; i++)
-  {
-    size_t max = findMax(*m, i);
-
-    if (max != i)
-    { // switch line
-      switchLine(m, c, i, max);
-    }
-
-    for (size_t j = i + 1; j < m->size; j++)
-    {
-      double mult = m->data[j][i] / m->data[i][i];
-      m->data[j][i] = 0;
       for (size_t k = i; k < m->size; k++)
       {
         m->data[j][k] -= mult * m->data[i][k];
