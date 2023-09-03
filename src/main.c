@@ -2,9 +2,11 @@
 #include <stdlib.h>
 #include "matrix.h"
 
-int main(void) {
+int main(void)
+{
   Matrix a;
   Vector c;
+  Vector *solution;
 
   readLinearEquation(&a, &c);
   printLinearEquation(a, c);
@@ -12,8 +14,12 @@ int main(void) {
   gaussEliminationWithPivoting(&a, &c);
 
   printLinearEquation(a, c);
+  solution = printSolutionBySubstitution(a, c);
 
-  for (size_t i = 0; i < a.size; i++) {
+  printResidual(a, c, *solution);
+
+  for (size_t i = 0; i < a.size; i++)
+  {
     free(a.data[i]);
   }
   free(a.data);
