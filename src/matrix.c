@@ -140,6 +140,30 @@ void gaussEliminationWithPivoting(Matrix *m, Vector *c)
   }
 }
 
+LinearEquation copyLinearEquation(LinearEquation la)
+{
+  LinearEquation lb;
+  lb.m.size = la.m.size;
+  lb.v.size = la.v.size;
+
+  lb.m.data = (double **)malloc(lb.m.size * sizeof(double *));
+  lb.v.data = (double *)malloc(lb.v.size * sizeof(double));
+
+  for (size_t i = 0; i < lb.m.size; i++)
+  {
+    lb.m.data[i] = (double *)malloc(lb.m.size * sizeof(double));
+
+    for (size_t j = 0; j < lb.m.size; j++)
+    {
+      lb.m.data[i][j] = la.m.data[i][j];
+    }
+
+    lb.v.data[i] = la.v.data[i];
+  }
+
+  return lb;
+}
+
 Vector *printSolutionBySubstitution(Matrix m, Vector c)
 {
   Vector *solution = (Vector *)malloc(sizeof(Vector));

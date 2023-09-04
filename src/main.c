@@ -1,29 +1,22 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include "matrix.h"
 
 int main(void)
 {
-  Matrix a;
-  Vector c;
+  LinearEquation originalLe;
+  LinearEquation triangleLe;
   Vector *solution;
 
-  readLinearEquation(&a, &c);
-  printLinearEquation(a, c);
+  readLinearEquation(&triangleLe.m, &triangleLe.v);
+  originalLe = copyLinearEquation(triangleLe);
 
-  gaussEliminationWithPivoting(&a, &c);
+  gaussEliminationWithPivoting(&triangleLe.m, &triangleLe.v);
 
-  printLinearEquation(a, c);
-  solution = printSolutionBySubstitution(a, c);
+  solution = printSolutionBySubstitution(triangleLe.m, triangleLe.v);
 
-  printResidual(a, c, *solution);
+  printLinearEquation(triangleLe.m, triangleLe.v);
 
-  for (size_t i = 0; i < a.size; i++)
-  {
-    free(a.data[i]);
-  }
-  free(a.data);
-  free(c.data);
+  printResidual(originalLe.m, originalLe.v, *solution);
 
   return 0;
 }
