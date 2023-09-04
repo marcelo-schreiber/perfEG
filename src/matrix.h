@@ -24,3 +24,5 @@ void gaussEliminationWithPivoting(Matrix *m, Vector *c);
 Vector *printSolutionBySubstitution(Matrix m, Vector c);
 void printResidual(Matrix m, Vector c, Vector solution);
 LinearEquation copyLinearEquation(LinearEquation la);
+void gaussEliminationWithPivotingWithoutMult(Matrix *m, Vector *c);
+void gaussEliminationWithoutPivoting(Matrix *m, Vector *c);
