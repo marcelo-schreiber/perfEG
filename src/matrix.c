@@ -9,7 +9,8 @@ void printMatrix(Matrix m)
   {
     for (size_t j = 0; j < m.size; j++)
     {
-      printf("%lf ", m.data[i][j]);
+      /* print only tree digits*/
+      printf("%.2lf ", m.data[i][j]);
     }
     printf("\n");
   }
@@ -19,7 +20,7 @@ void printVector(Vector v)
 {
   for (size_t i = 0; i < v.size; i++)
   {
-    printf("%lf ", v.data[i]);
+    printf("%.2lf ", v.data[i]);
   }
   printf("\n");
 }
@@ -64,29 +65,11 @@ void printLinearEquation(Matrix m, Vector v)
   {
     for (size_t j = 0; j < m.size; j++)
     {
-      printf("%lf ", m.data[i][j]);
+      printf("%.2lf ", m.data[i][j]);
     }
-    printf("= %lf\n", v.data[i]);
+    printf("= %.2lf\n", v.data[i]);
   }
   printf("\n");
-}
-
-void gaussElimination(Matrix a, Vector c)
-{
-  for (size_t i = 0; i < a.size; i++)
-  {
-    for (size_t j = i + 1; j < a.size; j++)
-    {
-      double m = a.data[j][i] / a.data[i][i];
-
-      for (size_t k = i; k < a.size; k++)
-      {
-        a.data[j][k] -= m * a.data[i][k];
-      }
-
-      c.data[j] -= m * c.data[i];
-    }
-  }
 }
 
 size_t findMax(Matrix m, size_t i)
@@ -129,13 +112,71 @@ void gaussEliminationWithPivoting(Matrix *m, Vector *c)
     for (size_t j = i + 1; j < m->size; j++)
     {
       double mult = m->data[j][i] / m->data[i][i];
-
-      for (size_t k = i; k < m->size; k++)
+      m->data[j][i] = 0; // [j][i] = 0
+      for (size_t k = i + 1; k < m->size; k++)
       {
         m->data[j][k] -= mult * m->data[i][k];
       }
 
       c->data[j] -= mult * c->data[i];
+    }
+  }
+}
+
+void gaussEliminationWithoutPivoting(Matrix *m, Vector *c)
+{
+  for (size_t i = 0; i < m->size; i++)
+  {
+    for (size_t j = i; j < m->size; j++)
+    {
+      if (i == j)
+      {
+        double pivot = m->data[i][i];
+        for (size_t k = i; k < m->size; k++)
+        {
+          m->data[j][k] /= pivot;
+        }
+
+        c->data[i] /= pivot;
+
+        continue;
+      }
+
+      double mult = m->data[j][i] / m->data[i][i];
+      m->data[j][i] = 0; // [j][i] = 0
+
+      for (size_t k = i + 1; k < m->size; k++)
+      {
+        m->data[j][k] -= mult * m->data[i][k];
+      }
+
+      c->data[j] -= mult * c->data[i];
+
+      printLinearEquation(*m, *c);
+    }
+  }
+}
+
+void gaussEliminationWithPivotingWithoutMult(Matrix *m, Vector *c)
+{
+  for (size_t i = 0; i < m->size; i++)
+  {
+    size_t max = findMax(*m, i);
+
+    if (max != i)
+    { // switch line
+      switchLine(m, c, i, max);
+    }
+
+    for (size_t j = i + 1; j < m->size; j++)
+    {
+      // m->data[j][i] = 0; // [j][i] = 0
+      for (size_t k = i; k < m->size; k++)
+      {
+        m->data[j][k] = m->data[j][k] * m->data[i][i] - m->data[i][k] * m->data[j][i];
+      }
+
+      c->data[j] = c->data[j] * m->data[i][i] - c->data[i] * m->data[j][i];
     }
   }
 }
@@ -193,7 +234,7 @@ void printResidual(Matrix m, Vector c, Vector solution)
 
   for (size_t i = 0; i < m.size; i++)
   {
-    double sum = 0;
+    double sum = 0.0;
 
     for (size_t j = 0; j < m.size; j++)
       sum += m.data[i][j] * solution.data[j];
