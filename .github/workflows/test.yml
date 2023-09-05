@@ -14,4 +14,4 @@ jobs:
       - uses: actions/checkout@v3
       - name: run code
         # get simple example pipe into program and check output is correct
-        run: 'tail -n 4 sistemas.dat | ./perfEG  | grep "Solution: 1.00 3.00 -2.00"'
+        run: make check

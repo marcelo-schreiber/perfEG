@@ -56,4 +56,7 @@ purge:
 		@ $(RM) ./objects/*.o $(PROJ_NAME) *~
 		@ rmdir objects
  
+check:
+		tail -n 4 sistemas.dat | ./$(PROJ_NAME) | grep "Solution: 1.00 3.00 -2.00"
+
 .PHONY: all purge
