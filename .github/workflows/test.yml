@@ -2,16 +2,16 @@ name: is-code-coverage-working
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: make
-      run: make
+      - uses: actions/checkout@v3
+      - name: run code
+        # get simple example pipe into program and check output is correct
+        run: 'tail -n 4 sistemas.dat | ./perfEG  | grep "Solution: 1.00 3.00 -2.00"'
