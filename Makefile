@@ -22,7 +22,12 @@ CC_FLAGS=-c         \
          -mavx     \
 				 -std=c99	 \
          -pedantic
- 
+
+LIKWID_FLAGS=-DLIKWID_PERFMON \
+						 -I/usr/local/include\
+						 -L/usr/local/includelib\
+						 -llikwid
+
 # Command used at clean target
 RM = rm -rf
  
@@ -30,7 +35,7 @@ all: objFolder $(PROJ_NAME)
  
 $(PROJ_NAME): $(OBJ)
 		@ echo 'Building binary using GCC linker: $@'
-		$(CC) $^ -o $@
+		$(CC) $(LIKWID_FLAGS) $^ -o $@ -llikwid
 		@ echo 'Finished building binary: $@'
 		@ echo ' '
  
@@ -46,7 +51,7 @@ $(PROJ_NAME): $(OBJ)
  
 objFolder:
 		@ mkdir -p objects
- 
+
 purge:
 		@ $(RM) ./objects/*.o $(PROJ_NAME) *~
 		@ rmdir objects
