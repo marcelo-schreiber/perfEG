@@ -151,8 +151,6 @@ void gaussEliminationWithoutPivoting(Matrix *m, Vector *c)
       }
 
       c->data[j] -= mult * c->data[i];
-
-      printLinearEquation(*m, *c);
     }
   }
 }
@@ -171,7 +169,7 @@ void gaussEliminationWithPivotingWithoutMult(Matrix *m, Vector *c)
     for (size_t j = i + 1; j < m->size; j++)
     {
       // m->data[j][i] = 0; // [j][i] = 0
-      for (size_t k = i; k < m->size; k++)
+      for (size_t k = i + 1; k < m->size; k++)
       {
         m->data[j][k] = m->data[j][k] * m->data[i][i] - m->data[i][k] * m->data[j][i];
       }
