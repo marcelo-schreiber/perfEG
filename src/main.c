@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include <likwid.h>
+// #include <likwid.h>
 #include "matrix.h"
 
 enum solveMethods

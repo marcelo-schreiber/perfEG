@@ -12,6 +12,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: compile
+        run: make
       - name: run code
         # get simple example pipe into program and check output is correct
         run: make check
