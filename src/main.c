@@ -1,5 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
+#include <likwid.h>
 #include "matrix.h"
 
 enum solveMethods
@@ -9,14 +11,10 @@ enum solveMethods
   noPivot,
 };
 
-void solve(int solveMethod)
+void solve(int solveMethod, LinearEquation triangleLe)
 {
-  LinearEquation originalLe;
-  LinearEquation triangleLe;
+  LinearEquation originalLe = copyLinearEquation(triangleLe);
   Vector *solution;
-
-  readLinearEquation(&triangleLe.m, &triangleLe.v);
-  originalLe = copyLinearEquation(triangleLe);
 
   switch (solveMethod)
   {
@@ -39,13 +37,19 @@ void solve(int solveMethod)
 
   solution = printSolutionBySubstitution(triangleLe.m, triangleLe.v);
 
-  printLinearEquation(triangleLe.m, triangleLe.v);
+  // printLinearEquation(triangleLe.m, triangleLe.v);
+  // printLinearEquation(originalLe.m, originalLe.v);
 
   printResidual(originalLe.m, originalLe.v, *solution);
 }
 
 int main(void)
 {
-  solve(pivot);
+  LinearEquation triangleLe;
+  readLinearEquation(&triangleLe.m, &triangleLe.v);
+
+  solve(pivot, triangleLe);
+  solve(pivotNoMult, triangleLe);
+  solve(noPivot, triangleLe);
   return 0;
 }
