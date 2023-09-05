@@ -23,7 +23,7 @@ void solve(int solveMethod, LinearEquation triangleLe)
     gaussEliminationWithPivoting(&triangleLe.m, &triangleLe.v);
     break;
   case pivotNoMult:
-    printf("Solving with pivoting and no multiplication\n");
+    printf("Solving with pivoting and no division\n");
     gaussEliminationWithPivotingWithoutMult(&triangleLe.m, &triangleLe.v);
     break;
   case noPivot:
