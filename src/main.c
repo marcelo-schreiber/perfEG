@@ -1,7 +1,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-// #include <likwid.h>
+//#include <likwid.h>
+#include "utils.h"
 #include "matrix.h"
 
 enum solveMethods
@@ -16,19 +17,27 @@ void solve(int solveMethod, LinearEquation triangleLe)
   LinearEquation originalLe = copyLinearEquation(triangleLe);
   Vector *solution;
 
+  double tempo = timestamp();
+
   switch (solveMethod)
   {
   case pivot:
     printf("Solving with pivoting\n");
     gaussEliminationWithPivoting(&triangleLe.m, &triangleLe.v);
+    tempo = timestamp() - tempo;
+    printf("tempo de execucao: %lf\n", tempo);
     break;
   case pivotNoMult:
     printf("Solving with pivoting and no division\n");
     gaussEliminationWithPivotingWithoutMult(&triangleLe.m, &triangleLe.v);
+    tempo = timestamp() - tempo;
+    printf("tempo de execucao: %lf\n", tempo);
     break;
   case noPivot:
     printf("Solving without pivoting\n");
     gaussEliminationWithoutPivoting(&triangleLe.m, &triangleLe.v);
+    tempo = timestamp() - tempo;
+    printf("tempo de execucao: %lf\n", tempo);
     break;
   default:
     printf("Invalid solve method\n");
