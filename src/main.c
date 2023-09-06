@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-//#include <likwid.h>
+// #include <likwid.h>
 #include "utils.h"
 #include "matrix.h"
 
@@ -56,9 +56,12 @@ int main(void)
 {
   LinearEquation triangleLe;
   readLinearEquation(&triangleLe.m, &triangleLe.v);
+  LinearEquation aux = copyLinearEquation(triangleLe);
+  solve(pivot, aux);
+  aux = copyLinearEquation(triangleLe);
+  solve(pivotNoMult, aux);
+  aux = copyLinearEquation(triangleLe);
+  solve(noPivot, aux);
 
-  solve(pivot, triangleLe);
-  solve(pivotNoMult, triangleLe);
-  solve(noPivot, triangleLe);
   return 0;
 }

@@ -165,7 +165,6 @@ void gaussEliminationWithPivotingWithoutMult(Matrix *m, Vector *c)
     { // switch line
       switchLine(m, c, i, max);
     }
-
     for (size_t j = i + 1; j < m->size; j++)
     {
       // m->data[j][i] = 0; // [j][i] = 0
