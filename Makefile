@@ -16,12 +16,10 @@ CC=gcc
 CC_FLAGS=-c         \
          -W         \
          -Wall      \
-         -ansi      \
          -O3      \
          -march=native      \
-         -mavx     \
-				 -std=c99	 \
-         -pedantic
+         -mavx     
+
 
 # LIKWID_FLAGS=-DLIKWID_PERFMON \
 # 						 -I/usr/local/include\
