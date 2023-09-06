@@ -1,3 +1,4 @@
-Felipe Quaresma Vieira
+Felipe Quaresma Vieira - grr20215516
+Marcelo Augusto Rissette Schreiber - grr20220063
 
 Nosso trabalho funcionou corretamente para os sistemas que testamos. Uma observação que pode ser comentada é que o resíduo, na maioria dos casos, é nulo. Tivemos uma estranheza com o fato, porém fizemos diversos testes e tudo aparentou que a conta realizada está correta. Lembrando que isso se enquadra nos exemplos do sistema.dat, pois para sistemas extremos que utilizamos de exemplo, o resíduo não foi nulo e mostrou um resultado que acreditamos estar condizente. De resto, não houve problemas.
