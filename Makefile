@@ -52,9 +52,8 @@ objFolder:
 		@ mkdir -p objects
 
 purge:
-		@ $(RM) ./objects/*.o $(PROJ_NAME) *~
+		@ $(RM) ./objects/*.o ./src/data/results.log $(PROJ_NAME) *~
 		@ rmdir objects
- 
 check:
 		tail -n 4 sistemas.dat | ./$(PROJ_NAME) | grep "Solution: 1.00 3.00 -2.00"
 

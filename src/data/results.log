@@ -4,45 +4,45 @@ CPU type:	AMD K17 (Zen+) architecture
 CPU clock:	2.10 GHz
 --------------------------------------------------------------------------------
 Solving with pivoting
-tempo de execucao: 0.014417
-Solution: 1.00 1.00 -1.00 
-Residual: 0.00 0.00 0.00 
+tempo de execucao: 0.012644
+Solution: 1.00 -2.00 3.00 -4.00 
+Residual: -0.00 0.00 -0.00 0.00 
 Solving with pivoting and no division
-tempo de execucao: 0.000962
-Solution: 1.00 1.00 -1.00 
-Residual: 0.00 0.00 0.00 
+tempo de execucao: 0.001032
+Solution: 1.00 -2.00 3.00 -4.00 
+Residual: 0.00 0.00 0.00 0.00 
 Solving without pivoting
-tempo de execucao: 0.000922
-Solution: 1.00 1.00 -1.00 
-Residual: 0.00 0.00 -0.00 
+tempo de execucao: 0.001203
+Solution: 1.00 -2.00 3.00 -4.00 
+Residual: 0.00 0.00 0.00 0.00 
 --------------------------------------------------------------------------------
 Region com pivoteamento, Group 1: FLOPS_DP
 +-------------------+------------+
 |    Region Info    | HWThread 3 |
 +-------------------+------------+
-| RDTSC Runtime [s] |   0.000036 |
+| RDTSC Runtime [s] |   0.000034 |
 |     call count    |          1 |
 +-------------------+------------+
 
 +----------------------------------+---------+------------+
 |               Event              | Counter | HWThread 3 |
 +----------------------------------+---------+------------+
-|         ACTUAL_CPU_CLOCK         |  FIXC1  |     367529 |
-|           MAX_CPU_CLOCK          |  FIXC2  |     560028 |
-|       RETIRED_INSTRUCTIONS       |   PMC0  |      21509 |
-|        CPU_CLOCKS_UNHALTED       |   PMC1  |      61101 |
-| RETIRED_SSE_AVX_FLOPS_DOUBLE_ALL |   PMC2  |         49 |
+|         ACTUAL_CPU_CLOCK         |  FIXC1  |     327709 |
+|           MAX_CPU_CLOCK          |  FIXC2  |     489321 |
+|       RETIRED_INSTRUCTIONS       |   PMC0  |      26293 |
+|        CPU_CLOCKS_UNHALTED       |   PMC1  |      58411 |
+| RETIRED_SSE_AVX_FLOPS_DOUBLE_ALL |   PMC2  |         91 |
 |               MERGE              |   PMC3  |          0 |
 +----------------------------------+---------+------------+
 
 +----------------------+--------------+
 |        Metric        |  HWThread 3  |
 +----------------------+--------------+
-|  Runtime (RDTSC) [s] | 3.636865e-05 |
+|  Runtime (RDTSC) [s] | 3.441489e-05 |
 | Runtime unhalted [s] |       0.0002 |
-|      Clock [MHz]     |    1375.5632 |
-|          CPI         |       2.8407 |
-|     DP [MFLOP/s]     |       1.3473 |
+|      Clock [MHz]     |    1403.7653 |
+|          CPI         |       2.2215 |
+|     DP [MFLOP/s]     |       2.6442 |
 +----------------------+--------------+
 
 Region sem multiplicador, Group 1: FLOPS_DP
@@ -56,50 +56,50 @@ Region sem multiplicador, Group 1: FLOPS_DP
 +----------------------------------+---------+------------+
 |               Event              | Counter | HWThread 3 |
 +----------------------------------+---------+------------+
-|         ACTUAL_CPU_CLOCK         |  FIXC1  |     275779 |
-|           MAX_CPU_CLOCK          |  FIXC2  |     422835 |
-|       RETIRED_INSTRUCTIONS       |   PMC0  |      18470 |
-|        CPU_CLOCKS_UNHALTED       |   PMC1  |      31444 |
-| RETIRED_SSE_AVX_FLOPS_DOUBLE_ALL |   PMC2  |         46 |
+|         ACTUAL_CPU_CLOCK         |  FIXC1  |     266956 |
+|           MAX_CPU_CLOCK          |  FIXC2  |     399357 |
+|       RETIRED_INSTRUCTIONS       |   PMC0  |      21606 |
+|        CPU_CLOCKS_UNHALTED       |   PMC1  |      31300 |
+| RETIRED_SSE_AVX_FLOPS_DOUBLE_ALL |   PMC2  |         97 |
 |               MERGE              |   PMC3  |          0 |
 +----------------------------------+---------+------------+
 
 +----------------------+--------------+
 |        Metric        |  HWThread 3  |
 +----------------------+--------------+
-|  Runtime (RDTSC) [s] | 9.097173e-06 |
+|  Runtime (RDTSC) [s] | 9.087134e-06 |
 | Runtime unhalted [s] |       0.0001 |
-|      Clock [MHz]     |    1367.0643 |
-|          CPI         |       1.7024 |
-|     DP [MFLOP/s]     |       5.0565 |
+|      Clock [MHz]     |    1401.1298 |
+|          CPI         |       1.4487 |
+|     DP [MFLOP/s]     |      10.6744 |
 +----------------------+--------------+
 
 Region sem pivoteamento, Group 1: FLOPS_DP
 +-------------------+------------+
 |    Region Info    | HWThread 3 |
 +-------------------+------------+
-| RDTSC Runtime [s] |   0.000009 |
+| RDTSC Runtime [s] |   0.000012 |
 |     call count    |          1 |
 +-------------------+------------+
 
 +----------------------------------+---------+------------+
 |               Event              | Counter | HWThread 3 |
 +----------------------------------+---------+------------+
-|         ACTUAL_CPU_CLOCK         |  FIXC1  |     267602 |
-|           MAX_CPU_CLOCK          |  FIXC2  |     412125 |
-|       RETIRED_INSTRUCTIONS       |   PMC0  |      19439 |
-|        CPU_CLOCKS_UNHALTED       |   PMC1  |      31053 |
-| RETIRED_SSE_AVX_FLOPS_DOUBLE_ALL |   PMC2  |         58 |
+|         ACTUAL_CPU_CLOCK         |  FIXC1  |     267507 |
+|           MAX_CPU_CLOCK          |  FIXC2  |     404187 |
+|       RETIRED_INSTRUCTIONS       |   PMC0  |      22419 |
+|        CPU_CLOCKS_UNHALTED       |   PMC1  |      32953 |
+| RETIRED_SSE_AVX_FLOPS_DOUBLE_ALL |   PMC2  |        105 |
 |               MERGE              |   PMC3  |          0 |
 +----------------------------------+---------+------------+
 
 +----------------------+--------------+
 |        Metric        |  HWThread 3  |
 +----------------------+--------------+
-|  Runtime (RDTSC) [s] | 9.157286e-06 |
+|  Runtime (RDTSC) [s] | 1.222305e-05 |
 | Runtime unhalted [s] |       0.0001 |
-|      Clock [MHz]     |    1361.0030 |
-|          CPI         |       1.5975 |
-|     DP [MFLOP/s]     |       6.3338 |
+|      Clock [MHz]     |    1387.2438 |
+|          CPI         |       1.4699 |
+|     DP [MFLOP/s]     |       8.5903 |
 +----------------------+--------------+
 
