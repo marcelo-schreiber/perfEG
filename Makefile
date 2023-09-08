@@ -21,10 +21,10 @@ CC_FLAGS=-c         \
          -mavx     
 
 
-# LIKWID_FLAGS=-DLIKWID_PERFMON \
-# 						 -I/usr/local/include\
-# 						 -L/usr/local/includelib\
-# 						 -llikwid
+ LIKWID_FLAGS=-DLIKWID_PERFMON \
+ 						 -I/usr/local/include\
+ 						 -L/usr/local/includelib\
+ 						 -llikwid
 
 # Command used at clean target
 RM = rm -rf
@@ -33,8 +33,8 @@ all: objFolder $(PROJ_NAME)
  
 $(PROJ_NAME): $(OBJ)
 		@ echo 'Building binary using GCC linker: $@'
-# $(CC) $(LIKWID_FLAGS) $^ -o $@ -llikwid
-		$(CC) $^ -o $@
+		$(CC) $(LIKWID_FLAGS) $^ -o $@ -llikwid
+#		$(CC) $^ -o $@
 		@ echo 'Finished building binary: $@'
 		@ echo ' '
  
@@ -45,7 +45,7 @@ $(PROJ_NAME): $(OBJ)
  
 ./objects/main.o: ./src/main.c $(H_SOURCE)
 		@ echo 'Building target using GCC compiler: $<'
-		$(CC) $< $(CC_FLAGS) -o $@
+		$(CC) $< $(CC_FLAGS) $(LIKWID_FLAGS) -o $@ -llikwid
 		@ echo ' '
  
 objFolder:

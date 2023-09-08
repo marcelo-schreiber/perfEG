@@ -1,0 +1,105 @@
+--------------------------------------------------------------------------------
+CPU name:	AMD Ryzen 5 3500U with Radeon Vega Mobile Gfx  
+CPU type:	AMD K17 (Zen+) architecture
+CPU clock:	2.10 GHz
+--------------------------------------------------------------------------------
+Solving with pivoting
+tempo de execucao: 0.014417
+Solution: 1.00 1.00 -1.00 
+Residual: 0.00 0.00 0.00 
+Solving with pivoting and no division
+tempo de execucao: 0.000962
+Solution: 1.00 1.00 -1.00 
+Residual: 0.00 0.00 0.00 
+Solving without pivoting
+tempo de execucao: 0.000922
+Solution: 1.00 1.00 -1.00 
+Residual: 0.00 0.00 -0.00 
+--------------------------------------------------------------------------------
+Region com pivoteamento, Group 1: FLOPS_DP
++-------------------+------------+
+|    Region Info    | HWThread 3 |
++-------------------+------------+
+| RDTSC Runtime [s] |   0.000036 |
+|     call count    |          1 |
++-------------------+------------+
+
++----------------------------------+---------+------------+
+|               Event              | Counter | HWThread 3 |
++----------------------------------+---------+------------+
+|         ACTUAL_CPU_CLOCK         |  FIXC1  |     367529 |
+|           MAX_CPU_CLOCK          |  FIXC2  |     560028 |
+|       RETIRED_INSTRUCTIONS       |   PMC0  |      21509 |
+|        CPU_CLOCKS_UNHALTED       |   PMC1  |      61101 |
+| RETIRED_SSE_AVX_FLOPS_DOUBLE_ALL |   PMC2  |         49 |
+|               MERGE              |   PMC3  |          0 |
++----------------------------------+---------+------------+
+
++----------------------+--------------+
+|        Metric        |  HWThread 3  |
++----------------------+--------------+
+|  Runtime (RDTSC) [s] | 3.636865e-05 |
+| Runtime unhalted [s] |       0.0002 |
+|      Clock [MHz]     |    1375.5632 |
+|          CPI         |       2.8407 |
+|     DP [MFLOP/s]     |       1.3473 |
++----------------------+--------------+
+
+Region sem multiplicador, Group 1: FLOPS_DP
++-------------------+------------+
+|    Region Info    | HWThread 3 |
++-------------------+------------+
+| RDTSC Runtime [s] |   0.000009 |
+|     call count    |          1 |
++-------------------+------------+
+
++----------------------------------+---------+------------+
+|               Event              | Counter | HWThread 3 |
++----------------------------------+---------+------------+
+|         ACTUAL_CPU_CLOCK         |  FIXC1  |     275779 |
+|           MAX_CPU_CLOCK          |  FIXC2  |     422835 |
+|       RETIRED_INSTRUCTIONS       |   PMC0  |      18470 |
+|        CPU_CLOCKS_UNHALTED       |   PMC1  |      31444 |
+| RETIRED_SSE_AVX_FLOPS_DOUBLE_ALL |   PMC2  |         46 |
+|               MERGE              |   PMC3  |          0 |
++----------------------------------+---------+------------+
+
++----------------------+--------------+
+|        Metric        |  HWThread 3  |
++----------------------+--------------+
+|  Runtime (RDTSC) [s] | 9.097173e-06 |
+| Runtime unhalted [s] |       0.0001 |
+|      Clock [MHz]     |    1367.0643 |
+|          CPI         |       1.7024 |
+|     DP [MFLOP/s]     |       5.0565 |
++----------------------+--------------+
+
+Region sem pivoteamento, Group 1: FLOPS_DP
++-------------------+------------+
+|    Region Info    | HWThread 3 |
++-------------------+------------+
+| RDTSC Runtime [s] |   0.000009 |
+|     call count    |          1 |
++-------------------+------------+
+
++----------------------------------+---------+------------+
+|               Event              | Counter | HWThread 3 |
++----------------------------------+---------+------------+
+|         ACTUAL_CPU_CLOCK         |  FIXC1  |     267602 |
+|           MAX_CPU_CLOCK          |  FIXC2  |     412125 |
+|       RETIRED_INSTRUCTIONS       |   PMC0  |      19439 |
+|        CPU_CLOCKS_UNHALTED       |   PMC1  |      31053 |
+| RETIRED_SSE_AVX_FLOPS_DOUBLE_ALL |   PMC2  |         58 |
+|               MERGE              |   PMC3  |          0 |
++----------------------------------+---------+------------+
+
++----------------------+--------------+
+|        Metric        |  HWThread 3  |
++----------------------+--------------+
+|  Runtime (RDTSC) [s] | 9.157286e-06 |
+| Runtime unhalted [s] |       0.0001 |
+|      Clock [MHz]     |    1361.0030 |
+|          CPI         |       1.5975 |
+|     DP [MFLOP/s]     |       6.3338 |
++----------------------+--------------+
+

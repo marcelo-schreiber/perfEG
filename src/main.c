@@ -1,7 +1,6 @@
 #include <stdlib.h>
-#include <string.h>
 #include <stdio.h>
-// #include <likwid.h>
+#include <likwid.h>
 #include "utils.h"
 #include "matrix.h"
 
@@ -18,7 +17,6 @@ void solve(int solveMethod, LinearEquation triangleLe)
   Vector *solution;
 
   double tempo = timestamp();
-
   switch (solveMethod)
   {
   case pivot:
@@ -56,12 +54,23 @@ int main(void)
 {
   LinearEquation triangleLe;
   readLinearEquation(&triangleLe.m, &triangleLe.v);
-  LinearEquation aux = copyLinearEquation(triangleLe);
-  solve(pivot, aux);
-  aux = copyLinearEquation(triangleLe);
-  solve(pivotNoMult, aux);
-  aux = copyLinearEquation(triangleLe);
-  solve(noPivot, aux);
 
+  LinearEquation aux = copyLinearEquation(triangleLe);
+
+  LIKWID_MARKER_INIT;
+
+  LIKWID_MARKER_START("com pivoteamento");
+  solve(pivot, aux);
+  LIKWID_MARKER_STOP("com pivoteamento");
+  aux = copyLinearEquation(triangleLe);
+  LIKWID_MARKER_START("sem multiplicador");
+  solve(pivotNoMult, aux);
+  LIKWID_MARKER_STOP("sem multiplicador");
+  aux = copyLinearEquation(triangleLe);
+  LIKWID_MARKER_START("sem pivoteamento");
+  solve(noPivot, aux);
+  LIKWID_MARKER_STOP("sem pivoteamento");
+
+  LIKWID_MARKER_CLOSE;
   return 0;
 }
