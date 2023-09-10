@@ -30,11 +30,11 @@ python3 src/likwid.py
 
 ## Observações
 
-Foram observados dois comportamentos durante as testagens do trabalho. Estas são:
+Foram observados dois comportamentos durante as testagens do trabalho. Estes são:
 
-Para a grande maioria dos sistemas testados, se não todos, foi apresentado um resíduo nulo. Isso nos gerou uma certa estranheza, pois para outros exemplos que não fazem parte daqueles sistemas dados para testagem, o resíduo foi acertivo. Sendo assim, acreditamos que a conta feita para o cálculo do resíduo está certa e que somente foi uma estranheza, não um erro, que notamos.
+Para a grande maioria dos sistemas testados, se não todos, foi apresentado um resíduo nulo. Isso nos gerou uma certa estranheza, pois para outros exemplos com o próposito de alterar o resíduo e testar sua eficiência, o resíduo foi acertivo. Sendo assim, acreditamos que a conta feita para o seu cálculo está certa e que somente foi uma estranheza, não um erro, que notamos.
 
-O outro comportamento foi com os métodos que não utilizam o pivoteamento e o que não utiliza os multiplicadores. Dos exemplos citados no arquivo "sistemas.dat", há erro na resolução final dos dois modelos para os sistemas a seguir:
+O outro comportamento notado acontece com o sistema abaixo. Dos exemplos citados no arquivo "sistemas.dat", há erro na resolução final apenas para o sistema a seguir:
 
 17
 -3  0  0  1  3  0  0  0  0  0  0  0  0  0  0  0  0  0
@@ -54,5 +54,3 @@ O outro comportamento foi com os métodos que não utilizam o pivoteamento e o q
  0  0  0  0  0  0  0  0  0  0  0  0 -3 -1  0  0  1  0
  0  0  0  0  0  0  0  0  0  0  0  0  3  0  1  0  0  10
  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 -3 -1  0
-
-(inclusive, esse não é solucionado por nenhum dos métodos).
