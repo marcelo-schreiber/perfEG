@@ -11,6 +11,12 @@ Só isso já vai funcionar (não é obrigatório o make antes):
 python src/likwid.py
 ```
 
+ou
+
+```bash
+python3 src/likwid.py
+```
+
 ## Arquivos e diretórios
 
 - src: diretório com os códigos fonte
