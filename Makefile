@@ -8,7 +8,11 @@ H_SOURCE=$(wildcard ./src/*.h)
  
 # Object files
 OBJ=$(subst .c,.o,$(subst src,objects,$(C_SOURCE)))
- 
+
+# List of files to be zipped
+DISTFILES = src/*.c src/*.h README* Makefile src/data/sistemas.dat src/likwid.py
+DISTDIR = `basename ${PWD}`
+
 # Compiler and linker
 CC=gcc
  
@@ -23,8 +27,7 @@ CC_FLAGS=-c         \
 
  LIKWID_FLAGS=-DLIKWID_PERFMON \
  						 -I/usr/local/include\
- 						 -L/usr/local/includelib\
- 						 -llikwid
+ 						 -L/usr/local/includelib
 
 # Command used at clean target
 RM = rm -rf
@@ -32,28 +35,33 @@ RM = rm -rf
 all: objFolder $(PROJ_NAME)
  
 $(PROJ_NAME): $(OBJ)
-		@ echo 'Building binary using GCC linker: $@'
 		$(CC) $(LIKWID_FLAGS) $^ -o $@ -llikwid
 #		$(CC) $^ -o $@
 		@ echo 'Finished building binary: $@'
 		@ echo ' '
  
 ./objects/%.o: ./src/%.c ./src/%.h
-		@ echo 'Building target using GCC compiler: $<'
 		$(CC) $< $(CC_FLAGS) -o $@
-		@ echo ' '
  
 ./objects/main.o: ./src/main.c $(H_SOURCE)
-		@ echo 'Building target using GCC compiler: $<'
 		$(CC) $< $(CC_FLAGS) $(LIKWID_FLAGS) -o $@ -llikwid
-		@ echo ' '
- 
+
 objFolder:
 		@ mkdir -p objects
 
 purge:
-		@ $(RM) ./objects/*.o ./src/data/results.log $(PROJ_NAME) *~
+		@ $(RM) ./objects/*.o ./src/data/results.log $(PROJ_NAME) $(DISTDIR).tar *~
 		@ rmdir objects
+
+clean:
+		@ $(RM) *~ *.bak
+
+dist:
+		@ echo "Gerando arquivo de distribuição ($(DISTDIR).tar) ..."
+		@ ln -s . $(DISTDIR)
+		@ tar -cvf $(DISTDIR).tar $(addprefix ./$(DISTDIR)/, $(DISTFILES))
+		@ rm -f $(DISTDIR)
+
 check:
 		tail -n 4 sistemas.dat | ./$(PROJ_NAME) | grep "Solution: 1.00 3.00 -2.00"
 
