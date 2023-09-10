@@ -17,6 +17,8 @@ ou
 python3 src/likwid.py
 ```
 
+O arquivo de saída será gerado em `src/data/results.log`.
+
 ## Arquivos e diretórios
 
 - src: diretório com os códigos fonte
